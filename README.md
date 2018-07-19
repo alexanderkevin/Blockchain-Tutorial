@@ -11,11 +11,11 @@ If you start with a newly installed Ubuntu OS do install NPM, Curl, and Node wit
 ```
 sudo apt install curl
 sudo apt install npm
-sudo apt install node
+sudo apt install nodejs-legacy
 ```
 
 Here are the summary of important step by step to install Hyperledger Composer & Composer Rest Server on your VM:
-> Important, Don't use sudo on any of the following command
+> Important, don't use sudo on any of the following command
 
 1. Download the script to install all the necessary prerequisites and make sure you have the necessary priviliged
 ```
@@ -107,6 +107,11 @@ cd Documents/fabric-dev-servers
 ```
 ./startFabric.sh
 ```
+3. Go to your Blockchain-Tutorial directory 
+```
+cd ..
+cd Blockchain-Tutorial
+```
 
 Before proceeding to the next step, it is assumed that you have created the .bna file after you finished editing your code and ready to deploy the updates
 by running this command
@@ -120,7 +125,7 @@ composer network install --card PeerAdmin@hlfv1 --archiveFile vehicle-manufactur
 ```
 4. Start your business network
 ```
-composer network start --networkName vehicle-manufacture-network --networkVersion 0.2.6--networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+composer network start --networkName vehicle-manufacture-network --networkVersion 0.2.6 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
 ```
 5. Check whether your business network is running (Optional)
 ```
