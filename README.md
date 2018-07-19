@@ -68,7 +68,9 @@ export FABRIC_VERSION=hlfv11
 composer-playground
 ```
 
-Now you can import the sample business network by navigating through the GUI 
+Now you can import the sample business network by navigating through the GUI.
+
+To generate the REST server, see the [Generate Rest Server Section](##generate-rest-server)
 
 When you are finish exploring your installation, don't forget to turn of your fabric network by going into your fabric-dev-servers folder then run these script
 ```
@@ -80,9 +82,8 @@ Congratulation! You have successfully installed blockchain network on your local
 
 ## Rerun the business network
 
-Here are a handy guides on how to turn on and off your network. 
+Here are a handy guides on how to turn back on your network. 
 Everytime you want to use your hyperledger playground or after restarting your computer/vm follow these step:
-> on your first terminal
 1. Go to your fabric-dev-servers folder in the following tutorial it's located on your Documents folder
 ```
 cd Documents/fabric-dev-servers
@@ -91,6 +92,13 @@ cd Documents/fabric-dev-servers
 ```
 ./startFabric.sh
 ```
+
+Before proceeding to the next step, it is assumed that you have created the .bna file after you finished editing your code and ready to deploy the updates
+by running this command
+```
+composer archive create -t dir -n .
+```
+
 3. Installing your business network
 ```
 composer network install --card PeerAdmin@hlfv1 --archiveFile vehicle-manufacture-network.0.0.1.bna
@@ -106,6 +114,29 @@ composer network ping --card admin@tutorial-network
 6. Run Composer Playground
 ```
 composer-playground
+```
+
+## Generate Rest Server
+> This step will guide you to create and open rest server for testing purposes only, for production enviroment with identity management kindly follow this link: https://hyperledger.github.io/composer/latest/integrating/enabling-rest-authentication.html after that, continue with this article link: https://hyperledger.github.io/composer/latest/integrating/enabling-multiuser.html
+
+To generate a simple rest server capabilty for interacting with the business network, follow this step:
+1. Open terminal then run these command to generate the rest server
+```
+composer-rest-server
+```
+2. Enter admin@vehicle-manufacture-network as the card name.
+
+3. Select never use namespaces when asked whether to use namespaces in the generated API.
+
+4. Select No when asked whether to secure the generated API.
+
+5. Select Yes when asked whether to enable event publication.
+
+6. Select No when asked whether to enable TLS security.
+
+7. Open up on your browser
+```
+localhost:3000
 ```
 
 ## Models within this business network
