@@ -67,10 +67,14 @@ export FABRIC_VERSION=hlfv11
 ```
 composer-playground
 ```
+14. Open up your browser
+```
+localhost:8080
+```
 
 Now you can import the sample business network by navigating through the GUI.
 
-To generate the REST server, see the [Generate Rest Server Section](##generate-rest-server)
+To generate the REST server, see the [Generate Rest Server Section](#generate-rest-server)
 
 When you are finish exploring your installation, don't forget to turn of your fabric network by going into your fabric-dev-servers folder then run these script
 ```
@@ -115,6 +119,10 @@ composer network ping --card admin@tutorial-network
 ```
 composer-playground
 ```
+7. Open up your browser
+```
+localhost:8080
+```
 
 ## Generate Rest Server
 > This step will guide you to create and open rest server for testing purposes only, for production enviroment with identity management kindly follow this link: https://hyperledger.github.io/composer/latest/integrating/enabling-rest-authentication.html after that, continue with this article link: https://hyperledger.github.io/composer/latest/integrating/enabling-multiuser.html
@@ -124,7 +132,7 @@ To generate a simple rest server capabilty for interacting with the business net
 ```
 composer-rest-server
 ```
-2. Enter admin@vehicle-manufacture-network as the card name.
+2. Enter `admin@vehicle-manufacture-network` as the card name.
 
 3. Select never use namespaces when asked whether to use namespaces in the generated API.
 
@@ -134,7 +142,7 @@ composer-rest-server
 
 6. Select No when asked whether to enable TLS security.
 
-7. Open up on your browser
+7. Open up your browser
 ```
 localhost:3000
 ```
