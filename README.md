@@ -7,14 +7,23 @@
 
 For full step and explanation on how to install localy, kindly check this link: http://releases.ubuntu.com/16.04/
 
+If you start with a newly installed Ubuntu OS do install NPM, Curl, and Node with the following Command
+```
+sudo apt install curl
+sudo apt install npm
+sudo apt install node
+```
+
 Here are the summary of important step by step to install Hyperledger Composer & Composer Rest Server on your VM:
+> Important, Don't use sudo on any of the following command
+
 1. Download the script to install all the necessary prerequisites and make sure you have the necessary priviliged
 ```
 curl -O https://hyperledger.github.io/composer/latest/prereqs-ubuntu.sh
 
 chmod u+x prereqs-ubuntu.sh
 ```
-2. Run the script 
+2. Run the script
 ```
 ./prereqs-ubuntu.sh
 ```
@@ -52,6 +61,7 @@ tar -xvf fabric-dev-servers.tar.gz
 export FABRIC_VERSION=hlfv11
 ```
 10. In the fabric-dev-servers folder run the following script 
+> In case docker access was denied, run the folowing command `usermod -a -G docker $USER` and then logout and login again.
 ```
 ./downloadFabric.sh
 ```
@@ -72,11 +82,12 @@ composer-playground
 localhost:8080
 ```
 
-Now you can import the sample business network by navigating through the GUI.
+Now you can import the sample business network by navigating through the GUI. 
+Clone this repositories to get the prebuilt `vehicle-manufacutre-network@0.2.6.bna` file to be imported.
 
 To generate the REST server, see the [Generate Rest Server Section](#generate-rest-server)
 
-When you are finish exploring your installation, don't forget to turn of your fabric network by going into your fabric-dev-servers folder then run these script
+When you are finish exploring your installation, don't forget to turn off your fabric network by going into your fabric-dev-servers folder then run these script
 ```
 ./stopFabric.sh
 ```
@@ -105,15 +116,15 @@ composer archive create -t dir -n .
 
 3. Installing your business network
 ```
-composer network install --card PeerAdmin@hlfv1 --archiveFile vehicle-manufacture-network.0.0.1.bna
+composer network install --card PeerAdmin@hlfv1 --archiveFile vehicle-manufacture-network@0.2.6.bna
 ```
 4. Start your business network
 ```
-composer network start --networkName vehicle-manufacture-network --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+composer network start --networkName vehicle-manufacture-network --networkVersion 0.2.6--networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
 ```
 5. Check whether your business network is running (Optional)
 ```
-composer network ping --card admin@tutorial-network
+composer network ping --card admin@vehicle-manufacture-network
 ```
 6. Run Composer Playground
 ```
