@@ -154,13 +154,22 @@ composer-rest-server
 
 4. Select No when asked whether to secure the generated API.
 
-5. Select Yes when asked whether to enable event publication.
+5. Select No when asked whether to enable authentication using passport.
 
-6. Select No when asked whether to enable TLS security.
+6. Select Yes when asked whether to enable event publication.
 
-7. Open up your browser
+7. Select No when asked whether to enable TLS security.
+
+8. Open up your browser
 ```
 localhost:3000
+```
+
+## Unit Testing
+
+To run unit testing simply run these command
+```
+npm test
 ```
 
 ## Models within this business network
