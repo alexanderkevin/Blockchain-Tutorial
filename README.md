@@ -2,6 +2,112 @@
 
 > This network tracks the manufacture of vehicles from an initial order request through to their completion by the manufacturer. A regulator is able to provide oversight throughout this whole process. 
 
+## Installing pre-requisites
+> To run this this tutorial, preferably download Oracle link: https://www.virtualbox.org/wiki/Downloads and install Ubuntu 16.04(Xenial) link: http://releases.ubuntu.com/16.04/
+
+For full step and explanation on how to install localy, kindly check this link: http://releases.ubuntu.com/16.04/
+
+Here are the summary of important step by step to install Hyperledger Composer & Composer Rest Server on your VM:
+1. Download the script to install all the necessary prerequisites and make sure you have the necessary priviliged
+```
+curl -O https://hyperledger.github.io/composer/latest/prereqs-ubuntu.sh
+
+chmod u+x prereqs-ubuntu.sh
+```
+2. Run the script 
+```
+./prereqs-ubuntu.sh
+```
+3. Install Composer CLI tools:
+```
+npm install -g composer-cli
+```
+4. Instaling Composer Rest Server
+```
+npm install -g composer-rest-server
+```
+5. Useful utility for generating application assets (Optional)
+``` 
+npm install -g generator-hyperledger-composer
+```
+6. Yeoman is a tool for generating applications, which utilises generator-hyperledger-composer (Optional)
+```
+npm install -g yo
+```
+7. Install the Composer Playground
+```
+npm install -g composer-playground
+```
+8. Go to your directory of choices (in these example Document) and get the Hyperledger Fabric
+```
+cd Documents
+
+mkdir ~/fabric-dev-servers && cd ~/fabric-dev-servers
+
+curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
+tar -xvf fabric-dev-servers.tar.gz
+```
+9. Make sure you use Hyperledger version 1.1 for Hyperledger Composer version 17.0 or newer
+```
+export FABRIC_VERSION=hlfv11
+```
+10. In the fabric-dev-servers folder run the following script 
+```
+./downloadFabric.sh
+```
+11. Start your Hyperldeger Fabric
+```
+./startFabric.sh
+```
+12. Create your peerAdmin Card
+```
+ ./createPeerAdminCard.sh
+```
+13. Test your newly installed system by opening the Composer Playground
+```
+composer-playground
+```
+
+Now you can import the sample business network by navigating through the GUI 
+
+When you are finish exploring your installation, don't forget to turn of your fabric network by going into your fabric-dev-servers folder then run these script
+```
+./stopFabric.sh
+```
+
+Congratulation! You have successfully installed blockchain network on your local machine!
+
+
+## Rerun the business network
+
+Here are a handy guides on how to turn on and off your network. 
+Everytime you want to use your hyperledger playground or after restarting your computer/vm follow these step:
+> on your first terminal
+1. Go to your fabric-dev-servers folder in the following tutorial it's located on your Documents folder
+```
+cd Documents/fabric-dev-servers
+```
+2. Run the startFabric script (keep in mind that you don't need to rerun the createPeerAdminCard.sh)
+```
+./startFabric.sh
+```
+3. Installing your business network
+```
+composer network install --card PeerAdmin@hlfv1 --archiveFile vehicle-manufacture-network.0.0.1.bna
+```
+4. Start your business network
+```
+composer network start --networkName vehicle-manufacture-network --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+```
+5. Check whether your business network is running (Optional)
+```
+composer network ping --card admin@tutorial-network
+```
+6. Run Composer Playground
+```
+composer-playground
+```
+
 ## Models within this business network
 
 ### Participants
